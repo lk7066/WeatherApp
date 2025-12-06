@@ -14,14 +14,46 @@
 </head>
 
 
-   
-
 <body class="bg-light">
-    
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-dark bg-primary px-3">
-        <span class="navbar-brand mb-0 h1">Weather Dashboard</span>
-    </nav>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 shadow-sm position-relative">
+    <div class="container-fluid">
+
+        <!-- LEFT SIDE: Logo + App Name -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" 
+                 alt="logo" width="34" class="me-2">
+            <span class="fw-bold fs-5">SkyCast</span>
+        </a>
+
+        <!-- TRUE CENTERED TITLE -->
+        <div class="navbar-title position-absolute start-50 translate-middle-x d-none d-lg-block">
+            <span class="text-white fw-bold fs-5">Weather Dashboard</span>
+        </div>
+
+        <!-- MOBILE TOGGLER -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuItems">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- RIGHT SIDE MENU -->
+        <div class="collapse navbar-collapse justify-content-end" id="menuItems">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">Today</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">Hourly</a></li>
+                <li class="nav-item"><a class="nav-link text-white fw-semibold" href="#">Daily</a></li>
+            </ul>
+        </div>
+  <!-- THEME CHANGE-->
+        <button id="themeToggle" class="btn btn-outline-light ms-3">
+    Light Mode
+</button>
+
+
+    </div>
+</nav>
+
+
 
     <!-- SEARCH + TOGGLE -->
     <div class="container mt-4">
@@ -36,11 +68,17 @@
             </div>
 
             <div class="col-md-3 d-flex align-items-center">
-                <label class="me-2 fw-bold">Days:</label>
-                <select id="dayToggle" class="form-select">
-                    <option value="15">15 Days</option>
-                    <option value="30">30 Days</option>
-                </select>
+               <label class="me-2 fw-bold">Days:</label>
+               <input id="dayInput" 
+               type="number" 
+               class="form-control" 
+               min="1" 
+               max="15" 
+               value="7"
+               placeholder="Enter days (1–15)"
+               style="max-width: 120px;"
+>
+
             </div>
 
         </div>

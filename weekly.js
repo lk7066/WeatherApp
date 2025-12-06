@@ -24,7 +24,8 @@ const iconMap = {
 };
 
 searchBtn.addEventListener("click", fetchCityWeather);
-dayToggle.addEventListener("change", fetchCityWeather);
+const dayInput = document.getElementById("dayInput");
+dayInput.addEventListener("input", fetchCityWeather);
 
 // Fetch city → lat/lon
 async function fetchCityWeather() {
@@ -62,30 +63,22 @@ async function fetchCityWeather() {
     }
 }
 
-
-// Fetch 15/30 day forecast 
+//fetch forecast
 async function fetchForecast(lat, lon) {
-    let days = parseInt(dayToggle.value);
+    let days = parseInt(dayInput.value);
 
-    // Open-Meteo max supported forecast is 16 days
-    if (days > 16) {
-        console.warn("Open-Meteo supports max 16 days. Using 16 instead.");
-        days = 16;
-    }
+    // validation
+    if (isNaN(days) || days < 1) days = 1;
+    if (days > 15) days = 15;
 
     const url =
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
         `&daily=weathercode,temperature_2m_max,temperature_2m_min` +
         `&timezone=auto&forecast_days=${days}`;
 
-    console.log("Forecast URL:", url);
-
     try {
         const res = await fetch(url);
-        console.log("Forecast status:", res.status);
-
         const data = await res.json();
-        console.log("Forecast data:", data);
 
         if (!data.daily || !data.daily.time) {
             throw new Error("Invalid forecast data");
@@ -94,11 +87,11 @@ async function fetchForecast(lat, lon) {
         renderForecast(data.daily);
 
     } catch (err) {
-        console.error("Forecast error:", err);
         cityTitle.textContent = "Unable to load forecast.";
         forecastContainer.innerHTML = "";
     }
 }
+
 
 
 // Render forecast cards
@@ -127,6 +120,23 @@ function renderForecast(daily) {
         forecastContainer.insertAdjacentHTML("beforeend", card);
     });
 }
+/* THEME TOGGLE */
+
+const themeToggle = document.getElementById("themeToggle");
+let isLight = false;
+
+themeToggle.addEventListener("click", () => {
+    isLight = !isLight;
+
+    if (isLight) {
+        document.body.classList.add("light-mode");
+        themeToggle.textContent = "Dark Mode";
+    } else {
+        document.body.classList.remove("light-mode");
+        themeToggle.textContent = "Light Mode";
+    }
+});
+
 
 
 /* END Lea Krasniqi */

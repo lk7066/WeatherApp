@@ -1,42 +1,203 @@
-/* Lea Krasniqi */
+
+/* BEGIN StudentName */
+
+/* ----------------------------------------------------- */
+/* GLOBAL THEME                                           */
+/* ----------------------------------------------------- */
+
+body {
+    background: linear-gradient(180deg, #0a0f24 0%, #141a33 40%, #0a0f24 100%);
+    color: #e6e6e6;
+    font-family: "Segoe UI", sans-serif;
+    overflow-x: hidden;
+}
+
+/* Make containers smoother */
+.container {
+    max-width: 1100px;
+}
+
+/* ----------------------------------------------------- */
+/* NAVBAR                                                 */
+/* ----------------------------------------------------- */
+
+.navbar {
+    background: #0d47a1 !important;
+    box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
+}
+
+.nav-link {
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: #90caf9 !important;
+}
+
+/* ----------------------------------------------------- */
+/* SEARCH BAR + TOGGLE                                    */
+/* ----------------------------------------------------- */
+
+input.form-control {
+    background: #1b2340;
+    border: 1px solid #394b7d;
+    color: #e6e6e6;
+}
+
+input.form-control::placeholder {
+    color: #9aa4c2;
+}
+
+input.form-control:focus {
+    background: #1f2a4d;
+    border-color: #64b5f6;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #1565c0;
+    border: none;
+    box-shadow: 0 0 10px #1e88e5;
+}
+
+.btn-primary:hover {
+    background-color: #1976d2;
+}
+
+select.form-select {
+    background: #1b2340;
+    border: 1px solid #394b7d;
+    color: #e6e6e6;
+}
+
+select.form-select:focus {
+    background: #1f2a4d;
+    border-color: #64b5f6;
+}
+
+/* ----------------------------------------------------- */
+/* WELCOME CARD                                           */
+/* ----------------------------------------------------- */
+
+.welcome-card {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2rem;
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 150, 255, 0.15);
+    color: white;
+}
+
+/* ----------------------------------------------------- */
+/* FORECAST CARDS                                         */
+/* ----------------------------------------------------- */
 
 .card-weather {
-    border-radius: 10px;
-    transition: 0.2s;
-    text-align: center;
+    background: #1b2340;
+    border-radius: 15px;
+    padding: 15px;
+    transition: 0.3s;
+    border: 1px solid #28345a;
+    box-shadow: 0 4px 20px rgba(0, 150, 255, 0.1);
+    color: #d0d6e8;
 }
 
 .card-weather:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 150, 255, 0.25);
+}
+
+.card-weather h5 {
+    color: #90caf9;
+    font-weight: 600;
+}
+
+/* Temperature colors */
+.text-danger {
+    color: #ef5350 !important;
+}
+
+.text-primary {
+    color: #64b5f6 !important;
+}
+.text-muted {
+    color: whitesmoke !important;
+}
+
+/* ----------------------------------------------------- */
+/* RESPONSIVE FIXES                                       */
+/* ----------------------------------------------------- */
+
+@media (max-width: 576px) {
+    .welcome-card {
+        margin: 0 10px;
+    }
+}
+/* ----------------------------------------------------- */
+/* LIGHT MODE THEME — Lea Krasniqi                       */
+/* ----------------------------------------------------- */
+
+body.light-mode {
+    background: linear-gradient(180deg, #cfe7ff 0%, #eaf3ff 40%, #ffffff 100%) !important;
+    color: black !important;
+}
+
+/* Cards */
+body.light-mode .card-weather {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #d0d0d0;
+}
+
+body.light-mode .card-weather:hover {
     transform: scale(1.03);
 }
 
-.weather-icon {
-    width: 60px;
+/* Welcome card */
+body.light-mode .welcome-card {
+    background: rgba(255, 255, 255, 0.85) !important;
+    color: black !important;
 }
 
-/* WELCOME  */
-.welcome-card {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    max-width: 650px;
+/* Inputs */
+body.light-mode .form-control,
+body.light-mode .form-select {
+    background: white !important;
+    color: black !important;
+    border: 1px solid #cccccc !important;
 }
 
-/* Make it look good on small screens */
-@media (max-width: 576px) {
-    .welcome-hero {
-        height: 60vh;
-    }
+body.light-mode .form-control::placeholder {
+    color: #777 !important;
+}
+
+/* Buttons */
+body.light-mode .btn-primary {
+    background-color: #1e88e5 !important;
+    border: none !important;
+}
+
+/* Navbar */
+body.light-mode .navbar {
+    background: #1976d2 !important;
+}
+
+/* Text colors */
+body.light-mode .text-danger {
+    color: #d32f2f !important;
+}
+
+body.light-mode .text-primary {
+    color: #1565c0 !important;
+}
+/* Light mode muted text (like "Try: London…") */
+body.light-mode .text-muted {
+    color: #000 !important;
 }
 
 
-/*  Gradient background                    */
+/* Lea Krasniqi */
 
 
-body {
-    background: linear-gradient(180deg, #cfe7ff 0%, #eaf3ff 40%, #ffffff 100%);
-    background-attachment: fixed;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/*Lea Krasniqi*/
+/* END StudentName */
