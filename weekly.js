@@ -1,14 +1,21 @@
 /* BEGIN Lea Krasniqi */
 
-
 const searchBtn = document.getElementById("searchBtn");
 const cityInput = document.getElementById("cityInput");
-const dayToggle = document.getElementById("dayToggle");
 const forecastContainer = document.getElementById("forecastContainer");
 const cityTitle = document.getElementById("cityTitle");
 
+// NEW: Celsius/Fahrenheit toggle state
+let isCelsius = true;
 
-// Weather icon 
+// NEW: Buttons
+const celsiusBtn = document.getElementById("celsiusBtn");
+const fahrenheitBtn = document.getElementById("fahrenheitBtn");
+
+// Activate Celsius by default
+celsiusBtn.classList.add("active");
+
+// Weather icon
 const iconMap = {
     0: "☀️",
     1: "🌤️",
@@ -24,7 +31,28 @@ const iconMap = {
 };
 
 searchBtn.addEventListener("click", fetchCityWeather);
-dayToggle.addEventListener("change", fetchCityWeather);
+
+// NEW: Fahrenheit/Celsius toggle events
+celsiusBtn.addEventListener("click", () => {
+    isCelsius = true;
+    celsiusBtn.classList.add("active");
+    fahrenheitBtn.classList.remove("active");
+
+    if (cityInput.value.trim()) fetchCityWeather();
+});
+
+fahrenheitBtn.addEventListener("click", () => {
+    isCelsius = false;
+    fahrenheitBtn.classList.add("active");
+    celsiusBtn.classList.remove("active");
+
+    if (cityInput.value.trim()) fetchCityWeather();
+});
+
+// NEW: day input
+const dayInput = document.getElementById("dayInput");
+dayInput.addEventListener("input", fetchCityWeather);
+
 
 // Fetch city → lat/lon
 async function fetchCityWeather() {
@@ -40,10 +68,7 @@ async function fetchCityWeather() {
 
     try {
         const geoRes = await fetch(geoUrl);
-        console.log("Geo status:", geoRes.status);
-
         const geoData = await geoRes.json();
-        console.log("Geo data:", geoData);
 
         if (!geoData.results || geoData.results.length === 0) {
             cityTitle.textContent = "City not found.";
@@ -63,29 +88,21 @@ async function fetchCityWeather() {
 }
 
 
-// Fetch 15/30 day forecast 
+// Fetch forecast
 async function fetchForecast(lat, lon) {
-    let days = parseInt(dayToggle.value);
+    let days = parseInt(dayInput.value);
 
-    // Open-Meteo max supported forecast is 16 days
-    if (days > 16) {
-        console.warn("Open-Meteo supports max 16 days. Using 16 instead.");
-        days = 16;
-    }
+    if (isNaN(days) || days < 1) days = 1;
+    if (days > 15) days = 15;
 
     const url =
         `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
         `&daily=weathercode,temperature_2m_max,temperature_2m_min` +
         `&timezone=auto&forecast_days=${days}`;
 
-    console.log("Forecast URL:", url);
-
     try {
         const res = await fetch(url);
-        console.log("Forecast status:", res.status);
-
         const data = await res.json();
-        console.log("Forecast data:", data);
 
         if (!data.daily || !data.daily.time) {
             throw new Error("Invalid forecast data");
@@ -94,17 +111,16 @@ async function fetchForecast(lat, lon) {
         renderForecast(data.daily);
 
     } catch (err) {
-        console.error("Forecast error:", err);
         cityTitle.textContent = "Unable to load forecast.";
         forecastContainer.innerHTML = "";
     }
 }
 
 
-// Render forecast cards
+// Render forecast cards (MODIFIED for °C/°F)
 function renderForecast(daily) {
 
-    // Hide welcome section AFTER user searches
+    // Hide welcome message after search
     const welcome = document.getElementById("welcomeSection");
     if (welcome) welcome.style.display = "none";
 
@@ -114,13 +130,24 @@ function renderForecast(daily) {
         const code = daily.weathercode[i];
         const icon = iconMap[code] || "🌡️";
 
+        // NEW: temperature conversion
+        let maxT = daily.temperature_2m_max[i];
+        let minT = daily.temperature_2m_min[i];
+
+        if (!isCelsius) {
+            maxT = (maxT * 9/5 + 32).toFixed(1);
+            minT = (minT * 9/5 + 32).toFixed(1);
+        }
+
+        const unit = isCelsius ? "°C" : "°F";
+
         const card = `
         <div class="col-md-3 col-sm-6">
             <div class="card card-weather shadow p-3 text-center">
                 <h5>${date}</h5>
                 <div class="fs-1">${icon}</div>
-                <p class="fw-bold text-danger">Max: ${daily.temperature_2m_max[i]}°C</p>
-                <p class="fw-bold text-primary">Min: ${daily.temperature_2m_min[i]}°C</p>
+                <p class="fw-bold text-danger">Max: ${maxT}${unit}</p>
+                <p class="fw-bold text-primary">Min: ${minT}${unit}</p>
             </div>
         </div>
         `;
@@ -128,5 +155,29 @@ function renderForecast(daily) {
     });
 }
 
+
+/* THEME TOGGLE */
+
+// set default theme to LIGHT MODE
+document.body.classList.add("light-mode");
+
+const themeToggle = document.getElementById("themeToggle");
+let isLight = true;
+
+themeToggle.textContent = "Dark Mode";
+
+themeToggle.addEventListener("click", () => {
+    isLight = !isLight;
+
+    if (isLight) {
+        document.body.classList.add("light-mode");
+        document.body.classList.remove("dark-mode");
+        themeToggle.textContent = "Dark Mode";
+    } else {
+        document.body.classList.remove("light-mode");
+        document.body.classList.add("dark-mode");
+        themeToggle.textContent = "Light Mode";
+    }
+});
 
 /* END Lea Krasniqi */

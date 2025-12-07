@@ -1,0 +1,138 @@
+:root {
+    --card-bg: rgba(255, 255, 255, 0.95);
+}
+
+/* ---------- BODY & LAYOUT ---------- */
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding-top: 20px;
+    background: linear-gradient(135deg, #cfe9ff, #9fd0ff);
+    transition: background 0.7s ease;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.main-container {
+    width: 100%;
+    max-width: 1100px;
+}
+
+/* Weather card */
+#weather-card {
+    max-width: 750px;
+    margin: 30px auto;
+    border-radius: 18px;
+    background: var(--card-bg);
+    backdrop-filter: blur(6px);
+}
+
+/* Info boxes */
+.info-box {
+    background: white;
+    border-radius: 14px;
+    padding: 18px;
+    transition: 0.2s;
+}
+
+.info-box:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Search */
+#searchInput {
+    border-radius: 14px;
+    padding: 12px 16px;
+    font-size: 1.05rem;
+}
+
+#searchBtn {
+    border-radius: 14px;
+    font-size: 1.05rem;
+    padding: 10px 0;
+}
+
+/* Main icon animation */
+#main-icon i {
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+/* Map */
+#map {
+    height: 260px;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 25px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+/* Temperature colors */
+.temp-hot { color: #ff5722; }
+.temp-warm { color: #ff9800; }
+.temp-cool { color: #2196f3; }
+.temp-cold { color: #3f51b5; }
+
+.small-label { color: #555; }
+.local-time { color: #444; }
+
+/* ---------- NAVBAR (LIGHT MODE) ---------- */
+.navbar {
+    background: #0d47a1 !important;
+    box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
+}
+
+.nav-link {
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: #90caf9 !important;
+}
+
+/* ---------- NAVBAR (DARK MODE) ---------- */
+body.dark-mode {
+    background: #0a0f1f;
+}
+
+body.dark-mode #weather-card {
+    background: rgba(15, 23, 42, 0.9);
+    color: white;
+}
+
+body.dark-mode .info-box {
+    background: rgba(255,255,255,0.06);
+    color: white;
+}
+
+body.dark-mode .navbar {
+    background: #020617 !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
+
+body.dark-mode .nav-link {
+    color: #dbeafe !important;
+}
+
+body.dark-mode .nav-link:hover {
+    color: #60a5fa !important;
+}
+
+body.dark-mode #themeToggle {
+    border-color: #dbeafe;
+    color: #dbeafe;
+}
+
+body.dark-mode #themeToggle:hover {
+    background: #1e3a8a;
+    color: white;
+}
+.footer {
+    background-color: #f1f3f5;
+    font-size: 0.9rem;
+    color: #212529;
+}
