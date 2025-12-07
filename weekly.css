@@ -1,4 +1,3 @@
-
 /* BEGIN StudentName */
 
 /* ----------------------------------------------------- */
@@ -35,24 +34,31 @@ body {
 }
 
 /* ----------------------------------------------------- */
-/* SEARCH BAR + TOGGLE                                    */
+/* SEARCH BAR (MODIFIED AS REQUESTED)                    */
 /* ----------------------------------------------------- */
 
-input.form-control {
-    background: #1b2340;
-    border: 1px solid #394b7d;
-    color: #e6e6e6;
+input.form-control,
+.custom-search {
+    background: #9aa4c2!important;
+    border: 1px solid #bfbfbf !important;
+    color: #000 !important;
 }
 
-input.form-control::placeholder {
-    color: #9aa4c2;
+input.form-control::placeholder,
+.custom-search::placeholder {
+    color: #555 !important;
 }
 
-input.form-control:focus {
-    background: #1f2a4d;
-    border-color: #64b5f6;
-    color: white;
+input.form-control:focus,
+.custom-search:focus {
+    background: #e0e0e0 !important;
+    border-color: #64b5f6 !important;
+    color: black !important;
 }
+
+/* ----------------------------------------------------- */
+/* BUTTONS                                               */
+/* ----------------------------------------------------- */
 
 .btn-primary {
     background-color: #1565c0;
@@ -121,6 +127,7 @@ select.form-select:focus {
 .text-primary {
     color: #64b5f6 !important;
 }
+
 .text-muted {
     color: whitesmoke !important;
 }
@@ -134,6 +141,7 @@ select.form-select:focus {
         margin: 0 10px;
     }
 }
+
 /* ----------------------------------------------------- */
 /* LIGHT MODE THEME — Lea Krasniqi                       */
 /* ----------------------------------------------------- */
@@ -160,17 +168,16 @@ body.light-mode .welcome-card {
     color: black !important;
 }
 
-/* Inputs */
+/* Inputs (light mode override) */
 body.light-mode .form-control,
-body.light-mode .form-select {
-    background: white !important;
-    color: black !important;
+body.light-mode .form-select,
+body.light-mode .custom-search {
+    background: #1b2340 !important;
+    color: #e6e6e6 !important;
     border: 1px solid #cccccc !important;
 }
 
-body.light-mode .form-control::placeholder {
-    color: #777 !important;
-}
+
 
 /* Buttons */
 body.light-mode .btn-primary {
@@ -191,17 +198,19 @@ body.light-mode .text-danger {
 body.light-mode .text-primary {
     color: #1565c0 !important;
 }
-/* Light mode muted text (like "Try: London…") */
+
 body.light-mode .text-muted {
     color: #000 !important;
 }
 
+/* Footer */
 body.light-mode .footer {
     background-color: #f1f3f5;
     font-size: 0.9rem;
     color: #212529;
     border-top: 1px solid #d5d7da;
 }
+
 body.dark-mode .footer {
     background-color: #262626 !important;
     color: #ffffff !important;
@@ -209,7 +218,4 @@ body.dark-mode .footer {
     border-top: 1px solid #3a3a3a;
 }
 
-/* Lea Krasniqi */
-
-
-/* END StudentName */
+/* END StudentNa*
