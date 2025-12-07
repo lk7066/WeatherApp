@@ -22,7 +22,7 @@ function showAlert(msg, type) {
 }
 
 function fetchCityCoords(city) {
-    const geoUrl = https://geocoding-api.open-meteo.com/v1/search?name=${city};
+    const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`;
     fetch(geoUrl)
         .then(res => res.json())
         .then(data => {
@@ -31,21 +31,28 @@ function fetchCityCoords(city) {
 return;
             }
             const { latitude, longitude, name, country } = data.results[0];
-            summaryBox.innerHTML = <div class='alert alert-primary mt-3'>Forecast for <strong>${name}, ${country}</strong></div>;
+            summaryBox.innerHTML = `<div class='alert alert-primary mt-3'>Forecast for <strong>${name}, ${country}</strong></div>`;
             fetchDailyForecast(latitude, longitude);
         })
         .catch(() => showAlert('Error fetching city data.', 'danger'));
 }
 
 function fetchDailyForecast(lat, lon) {
-    const weatherUrl = https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto;
+    const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto`;
     fetch(weatherUrl)
         .then(res => res.json())
         .then(data => {
+            console.log('Forecast API response:', data); // <-- ADD THIS
+            if (!data.daily || !data.daily.time) {
+                showAlert('Forecast data is missing or invalid.', 'warning');
+                return;
+            }
             renderForecast(data.daily);
         })
+
         .catch(() => showAlert('Error fetching forecast.', 'danger'));
 }
+
 
 function renderForecast(daily) {
     forecastOutput.innerHTML = '';
