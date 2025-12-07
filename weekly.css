@@ -172,8 +172,8 @@ body.light-mode .welcome-card {
 body.light-mode .form-control,
 body.light-mode .form-select,
 body.light-mode .custom-search {
-    background: white !important;
-    color: black !important;
+    background: #1b2340 !important;
+    color: #e6e6e6 !important;
     border: 1px solid #cccccc !important;
 }
 
