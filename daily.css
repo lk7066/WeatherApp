@@ -1,0 +1,113 @@
+/* Era Krasniqi - Daily Forecast Page */
+
+/* GENERAL STYLES */
+body {
+    background: linear-gradient(180deg, #0a0f24 0%, #141a33 40%, #0a0f24 100%);
+    color: #e6e6e6;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container {
+    max-width: 1100px;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #0d47a1 !important;
+    box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
+}
+
+.nav-link {
+    font-weight: 600;
+}
+
+.nav-link:hover {
+    color: #90caf9 !important;
+}
+
+/* WELCOME CARD */
+.welcome-card {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 2rem;
+    border-radius: 20px;
+ backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 40px rgba(0, 150, 255, 0.15);
+    color: white;
+}
+
+/* SEARCH & INPUT STYLES */
+input.form-control {
+    background: #1b2340;
+    border: 1px solid #394b7d;
+    color: #e6e6e6;
+}
+
+input.form-control::placeholder {
+    color: #9aa4c2;
+}
+
+input.form-control:focus {
+    background: #1f2a4d;
+    border-color: #64b5f6;
+    color: white;
+}
+
+.btn-primary {
+    background-color: #1565c0;
+    border: none;
+    box-shadow: 0 0 10px #1e88e5;
+}
+
+.btn-primary:hover {
+    background-color: #1976d2;
+}
+
+/* FORECAST CARDS */
+.card-weather {
+    background: #1b2340;
+    border-radius: 15px;
+    padding: 15px;
+    transition: 0.3s;
+    border: 1px solid #28345a;
+    box-shadow: 0 4px 20px rgba(0, 150, 255, 0.1);
+    color: #d0d6e8;
+}
+
+.card-weather:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 150, 255, 0.25);
+}
+
+.card-weather h5 {
+    color: #90caf9;
+    font-weight: 600;
+}
+
+/* ALERT */
+#summaryBox {
+    margin-top: 1rem;
+}
+/* DARK MODE */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode .navbar {
+    background-color: #1f1f1f !important;
+}
+
+body.dark-mode .card-weather {
+    background-color: #2c2c2c;
+    color: #f0f0f0;
+}
+
+/* FOOTER */
+.footer {
+    font-size: 0.9rem;
+    color: #cfd8dc;
+    background-color: transparent;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
