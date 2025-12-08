@@ -23,6 +23,7 @@ body {
 .navbar {
     background: #0d47a1 !important;
     box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
+   
 }
 
 .nav-link {
@@ -90,9 +91,10 @@ select.form-select:focus {
     padding: 2rem;
     border-radius: 20px;
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 40px rgba(0, 150, 255, 0.15);
+   box-shadow: 0 10px 40px rgba(0, 150, 255, 0.15);
+
     color: white;
+    
 }
 
 /* ----------------------------------------------------- */
@@ -156,6 +158,8 @@ body.light-mode .card-weather {
     background: white !important;
     color: black !important;
     border: 1px solid #d0d0d0;
+    
+    
 }
 
 body.light-mode .card-weather:hover {
@@ -166,6 +170,8 @@ body.light-mode .card-weather:hover {
 body.light-mode .welcome-card {
     background: rgba(255, 255, 255, 0.85) !important;
     color: black !important;
+
+    
 }
 
 /* Inputs (light mode override) */
@@ -188,6 +194,7 @@ body.light-mode .btn-primary {
 /* Navbar */
 body.light-mode .navbar {
     background: #1976d2 !important;
+    box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
 }
 
 /* Text colors */
@@ -212,7 +219,7 @@ body.light-mode .footer {
 }
 
 body.dark-mode .footer {
-    background-color: #262626 !important;
+    /* background-color: #212529 !important; */
     color: #ffffff !important;
     font-size: 0.9rem;
     border-top: 1px solid #3a3a3a;
