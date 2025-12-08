@@ -15,6 +15,19 @@ body {
     min-height: 100vh;
 }
 
+/* NIGHT MODE: darker overlay + night image */
+body.dark-mode {
+    background:
+        linear-gradient(
+            rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.55)
+        ),
+        url("night.jpg");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: cover;
+}
+
 /* Overall spacing */
 section {
     padding-top: 1.5rem;
@@ -43,6 +56,24 @@ section {
     font-size: 0.95rem;
     color: #384b6b;
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
+}
+
+/* Optional: make "SkyCast" name match search button color */
+.skycast-name {
+    color: #072a57;
+}
+
+/* Titles in sections (day mode defaults) */
+.locations-section h4 {
+    color: #0b2347;
+}
+
+.more-details-section h2 {
+    color: #0b2347;
+}
+
+.more-details-section p {
+    color: #384b6b;
 }
 
 /* Suggestions dropdown */
@@ -185,6 +216,28 @@ section {
     border-color: #061f3c;
 }
 
+/* ======== NEW: °C / °F TOGGLE NEXT TO SEARCH ======== */
+
+.unit-toggle {
+    border-radius: 0.75rem;
+    overflow: hidden;
+    align-self: stretch;
+}
+
+.unit-btn {
+    border: 1px solid #072a57;
+    background-color: #ffffff;
+    color: #072a57;
+    font-weight: 600;
+    padding-inline: 0.9rem;
+    min-width: 3rem;
+}
+
+.unit-btn.active {
+    background-color: #072a57;
+    color: #ffffff;
+}
+
 /* ============ NAVBAR (Lea) ============ */
 .navbar {
     background: #0d47a1 !important;
@@ -218,13 +271,52 @@ body.light-mode .footer {
     border-top: 1px solid #d5d7da;
 }
 
-
 /* Footer Dark Mode */
 body.dark-mode .footer {
     background-color: #1e1e1e;
     color: #ffffff !important;
     font-size: 0.9rem;
     border-top: 1px solid #3a3a3a;
+}
+
+/* HEART ICON BUTTON (NEW) */
+.heart-btn {
+    font-size: 1.4rem;
+    margin-right: 8px;
+    margin-top: -2px;
+    cursor: pointer;
+    opacity: 0.75;
+    transition: 0.2s ease;
+}
+
+.heart-btn:hover {
+    opacity: 1;
+}
+
+/* ================= NIGHT MODE TEXT COLORS ================= */
+
+/* Make the navy titles readable on dark background */
+body.dark-mode .welcome-title,
+body.dark-mode .welcome-subtitle {
+    color: #f5f7ff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* "SkyCast" name */
+body.dark-mode .skycast-name {
+    color: #ffffff;
+}
+
+/* Section headings + descriptions */
+body.dark-mode .locations-section h4,
+body.dark-mode .more-details-section h2,
+body.dark-mode .more-details-section p {
+    color: #f5f7ff;
+}
+
+/* Muted helper texts (Current location, etc.) */
+body.dark-mode .text-muted {
+    color: #dfe6ff !important;
 }
 
 /* END Olta Ademi */

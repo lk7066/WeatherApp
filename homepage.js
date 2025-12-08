@@ -8,7 +8,12 @@ const locationsContainer = document.getElementById("locationsContainer");
 const citySuggestions = document.getElementById("citySuggestions");
 const noLocationsMessage = document.getElementById("noLocationsMessage");
 
-/* Shared selected city key */
+/* Unit toggle */
+const celsiusBtn = document.getElementById("celsiusBtn");
+const fahrenheitBtn = document.getElementById("fahrenheitBtn");
+let isCelsius = true;
+
+/* Shared selected city key (for other pages if needed) */
 const SELECTED_CITY_KEY = "selectedCity";
 
 /* weather code → emoji */
@@ -49,6 +54,27 @@ homeCityInput.addEventListener("input", () => {
     loadCitySuggestions();
 });
 
+/* Unit toggle buttons */
+if (celsiusBtn && fahrenheitBtn) {
+    celsiusBtn.classList.add("active");
+
+    celsiusBtn.addEventListener("click", () => {
+        if (isCelsius) return;
+        isCelsius = true;
+        celsiusBtn.classList.add("active");
+        fahrenheitBtn.classList.remove("active");
+        refreshTemperatureUnits();
+    });
+
+    fahrenheitBtn.addEventListener("click", () => {
+        if (!isCelsius) return;
+        isCelsius = false;
+        fahrenheitBtn.classList.add("active");
+        celsiusBtn.classList.remove("active");
+        refreshTemperatureUnits();
+    });
+}
+
 /* default: Pristina as current location */
 fetchHomeCityWeather("Pristina", true);
 
@@ -88,6 +114,16 @@ function formatTimePart(value) {
     return parts.length === 2 ? parts[1].slice(0, 5) : value;
 }
 
+/* Celsius → display string based on current unit */
+function formatTempDisplay(celsiusValue) {
+    if (celsiusValue === null || celsiusValue === undefined) return "--";
+    if (isCelsius) {
+        return `${Math.round(celsiusValue)}°C`;
+    } else {
+        const f = celsiusValue * 9 / 5 + 32;
+        return `${f.toFixed(1)}°F`;
+    }
+}
 
 /* ---------- Autocomplete suggestions ---------- */
 
@@ -260,12 +296,6 @@ function addLocationCard(
 ) {
     const icon = iconMapHome[code] || "🌡️";
     const description = descriptionMapHome[code] || "";
-    const feelsLike = Math.round(temp);
-    const tempRounded = Math.round(temp);
-    const windRounded = Math.round(wind);
-    const highRounded = Math.round(highTemp);
-    const lowRounded  = Math.round(lowTemp);
-
     const updatedAt = new Date().toLocaleTimeString([], {
         hour: "2-digit",
         minute: "2-digit"
@@ -289,9 +319,18 @@ function addLocationCard(
         ? "location-card location-card-current"
         : "location-card";
 
+    /* ❤️ HEART ICON: only for non-default locations */
+    const heartIcon = !isDefaultLocation
+        ? '<span class="heart-btn">❤️</span>'
+        : "";
+
     const html =
         `<div class="${colClass}">
-            <div class="${cardClass}">
+            <div class="${cardClass}"
+                 data-temp="${temp}"
+                 data-high="${highTemp}"
+                 data-low="${lowTemp}"
+                 data-feels="${temp}">
                 <div class="d-flex justify-content-between align-items-start mb-2">
                     <div>
                         <div class="location-city">${name}</div>
@@ -299,23 +338,24 @@ function addLocationCard(
                         ${badge}
                     </div>
                     <div class="d-flex flex-column align-items-end">
+                        ${heartIcon}
                         <div class="location-icon mb-1">${icon}</div>
                         ${removeBtn}
                     </div>
                 </div>
 
                 <div class="d-flex align-items-baseline mb-1">
-                    <div class="location-temp me-2">${tempRounded}°C</div>
+                    <div class="location-temp me-2">${formatTempDisplay(temp)}</div>
                     <div class="location-desc">${description}</div>
                 </div>
 
-                <div class="location-meta mb-2">
-                    High ${highRounded}°C · Low ${lowRounded}°C
+                <div class="location-meta location-highlow mb-2">
+                    High ${formatTempDisplay(highTemp)} · Low ${formatTempDisplay(lowTemp)}
                 </div>
 
                 <div class="location-chips">
-                    <span class="meta-chip">🌡️ Feels like ${feelsLike}°C</span>
-                    <span class="meta-chip">💨 Wind ${windRounded} km/h</span>
+                    <span class="meta-chip feels-chip">🌡️ Feels like ${formatTempDisplay(temp)}</span>
+                    <span class="meta-chip">💨 Wind ${Math.round(wind)} km/h</span>
                     <span class="meta-chip">💧 Humidity ${humidity}%</span>
                     <span class="meta-chip">🌅 ${formatTimePart(sunrise)} · 🌇 ${formatTimePart(sunset)}</span>
                 </div>
@@ -349,7 +389,41 @@ function addLocationCard(
             });
         }
     }
+
+    // Make sure new card matches current unit (C/F)
+    refreshTemperatureUnits();
 }
+
+
+/* ---------- Update temps when toggling C/F ---------- */
+
+function refreshTemperatureUnits() {
+    const cards = locationsContainer.querySelectorAll(".location-card");
+    cards.forEach(card => {
+        const tempC = parseFloat(card.dataset.temp);
+        const highC = parseFloat(card.dataset.high);
+        const lowC  = parseFloat(card.dataset.low);
+        const feelsC = parseFloat(card.dataset.feels);
+
+        if (Number.isNaN(tempC)) return;
+
+        const tempEl = card.querySelector(".location-temp");
+        const highLowEl = card.querySelector(".location-highlow");
+        const feelsEl = card.querySelector(".feels-chip");
+
+        if (tempEl) {
+            tempEl.textContent = formatTempDisplay(tempC);
+        }
+        if (highLowEl) {
+            highLowEl.textContent =
+                `High ${formatTempDisplay(highC)} · Low ${formatTempDisplay(lowC)}`;
+        }
+        if (feelsEl) {
+            feelsEl.textContent = `🌡️ Feels like ${formatTempDisplay(feelsC || tempC)}`;
+        }
+    });
+}
+
 
 /* ---------- THEME TOGGLE (Lea) ---------- */
 
