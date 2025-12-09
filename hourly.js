@@ -1,4 +1,4 @@
-// hourly.js
+// BEGIN Rona Hoxha
 const searchBtn = document.getElementById("searchBtn");
 const cityInput = document.getElementById("cityInput");
 const alertBox = document.getElementById("alertBox");
@@ -104,3 +104,5 @@ function getWeatherIcon(code) {
     if (code <= 86) return "❄️";
     return "🌩️";
 }
+
+// END Rona Hoxha
