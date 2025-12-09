@@ -23,11 +23,12 @@ body {
     color: #90caf9 !important;
 }
 
+
 input.form-control,
 .custom-search {
-    background: #9aa4c2 !important;
-    border: 1px solid #bfbfbf !important;
-    color: #000 !important;
+    background: #1b2340 !important;
+    border: 1px solid #394b7d !important;
+    color: #e6e6e6 !important;
 }
 
 input.form-control::placeholder,
@@ -37,10 +38,11 @@ input.form-control::placeholder,
 
 input.form-control:focus,
 .custom-search:focus {
-    background: #e0e0e0 !important;
+    background: #1f2a4d !important;
     border-color: #64b5f6 !important;
-    color: black !important;
+    color: white !important;
 }
+
 
 .btn-primary {
     background-color: #1565c0;
@@ -133,13 +135,6 @@ body.light-mode .welcome-card {
     color: black !important;
 }
 
-body.light-mode .form-control,
-body.light-mode .form-select,
-body.light-mode .custom-search {
-    background: #1b2340 !important;
-    color: #e6e6e6 !important;
-    border: 1px solid #cccccc !important;
-}
 
 body.light-mode .btn-primary {
     background-color: #1e88e5 !important;
@@ -170,9 +165,7 @@ body.light-mode .footer {
 
 
 
-body.dark-mode .navbar {
-    background-color: #1f1f1f !important;
-}
+
 
 body.dark-mode .card-weather {
     background-color: #2c2c2c;

@@ -1,4 +1,6 @@
 // BEGIN Rona Hoxha
+
+
 const searchBtn = document.getElementById("searchBtn");
 const cityInput = document.getElementById("cityInput");
 const alertBox = document.getElementById("alertBox");

@@ -1,5 +1,7 @@
 /* BEGIN Lea Krasniqi */
 
+
+
 const searchBtn = document.getElementById("searchBtn");
 const cityInput = document.getElementById("cityInput");
 const forecastContainer = document.getElementById("forecastContainer");

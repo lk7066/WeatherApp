@@ -1,5 +1,8 @@
 /* BEGIN Olta Ademi */
 
+
+
+
 const homeSearchBtn = document.getElementById("homeSearchBtn");
 const homeCityInput = document.getElementById("homeCityInput");
 const homeMessage = document.getElementById("homeMessage");
