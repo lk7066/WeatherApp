@@ -5,17 +5,17 @@ const cityInput = document.getElementById("cityInput");
 const forecastContainer = document.getElementById("forecastContainer");
 const cityTitle = document.getElementById("cityTitle");
 
-// NEW: Celsius/Fahrenheit toggle state
+
 let isCelsius = true;
 
-// NEW: Buttons
+
 const celsiusBtn = document.getElementById("celsiusBtn");
 const fahrenheitBtn = document.getElementById("fahrenheitBtn");
 
-// Activate Celsius by default
+
 celsiusBtn.classList.add("active");
 
-// Weather icon
+
 const iconMap = {
     0: "☀️",
     1: "🌤️",
@@ -32,7 +32,7 @@ const iconMap = {
 
 searchBtn.addEventListener("click", fetchCityWeather);
 
-// NEW: Fahrenheit/Celsius toggle events
+
 celsiusBtn.addEventListener("click", () => {
     isCelsius = true;
     celsiusBtn.classList.add("active");
@@ -49,12 +49,11 @@ fahrenheitBtn.addEventListener("click", () => {
     if (cityInput.value.trim()) fetchCityWeather();
 });
 
-// NEW: day input
 const dayInput = document.getElementById("dayInput");
 dayInput.addEventListener("input", fetchCityWeather);
 
 
-// Fetch city → lat/lon
+
 async function fetchCityWeather() {
     const city = cityInput.value.trim();
     if (!city) {
@@ -88,7 +87,6 @@ async function fetchCityWeather() {
 }
 
 
-// Fetch forecast
 async function fetchForecast(lat, lon) {
     let days = parseInt(dayInput.value);
 
@@ -117,10 +115,9 @@ async function fetchForecast(lat, lon) {
 }
 
 
-// Render forecast cards (MODIFIED for °C/°F)
 function renderForecast(daily) {
 
-    // Hide welcome message after search
+    
     const welcome = document.getElementById("welcomeSection");
     if (welcome) welcome.style.display = "none";
 
@@ -130,7 +127,6 @@ function renderForecast(daily) {
         const code = daily.weathercode[i];
         const icon = iconMap[code] || "🌡️";
 
-        // NEW: temperature conversion
         let maxT = daily.temperature_2m_max[i];
         let minT = daily.temperature_2m_min[i];
 
@@ -156,9 +152,7 @@ function renderForecast(daily) {
 }
 
 
-/* THEME TOGGLE */
 
-// set default theme to LIGHT MODE
 document.body.classList.add("light-mode");
 
 const themeToggle = document.getElementById("themeToggle");

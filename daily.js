@@ -1,5 +1,4 @@
-// Era Krasniqi - Daily Forecast Page
-
+// Era Kelmendi
 const searchBtn = document.getElementById('searchBtn');
 const cityInput = document.getElementById('cityInput');
 const forecastOutput = document.getElementById('forecastOutput');
@@ -9,11 +8,10 @@ const themeToggle = document.getElementById('themeToggle');
 const celsiusBtn = document.getElementById("celsiusBtn");
 const fahrenheitBtn = document.getElementById("fahrenheitBtn");
 
-// Default temp mode = Celsius
 let isCelsius = true;
 celsiusBtn.classList.add("active");
 
-// Celsius button toggle
+
 celsiusBtn.addEventListener("click", () => {
     isCelsius = true;
     celsiusBtn.classList.add("active");
@@ -22,7 +20,7 @@ celsiusBtn.addEventListener("click", () => {
     if (cityInput.value.trim()) searchBtn.click();
 });
 
-// Fahrenheit button toggle
+
 fahrenheitBtn.addEventListener("click", () => {
     isCelsius = false;
     fahrenheitBtn.classList.add("active");
@@ -39,13 +37,11 @@ searchBtn.addEventListener('click', () => {
     }
     fetchCityCoords(city);
 });
-
 function showAlert(msg, type) {
     summaryBox.innerHTML = `
         <div class="alert alert-${type} mt-3">${msg}</div>
     `;
 }
-
 function fetchCityCoords(city) {
     const geoUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${city}`;
     fetch(geoUrl)
@@ -87,9 +83,6 @@ function fetchDailyForecast(lat, lon) {
         })
         .catch(() => showAlert('Error fetching forecast.', 'danger'));
 }
-
-
-// ICON MAP
 function icons(code) {
     if (code === 0) return '☀';
     if (code <= 3) return '⛅';
@@ -100,7 +93,6 @@ function icons(code) {
 }
 
 
-// RENDER INFO BOXES
 function renderForecast(daily) {
 
     forecastOutput.innerHTML = '';
@@ -112,10 +104,10 @@ function renderForecast(daily) {
     const todaySunrise = daily.sunrise[0].split("T")[1];
     const todaySunset = daily.sunset[0].split("T")[1];
 
-    // Temperature conversion if needed
+
     if (!isCelsius) {
-        todayMin = (todayMin * 9/5 + 32).toFixed(1);
-        todayMax = (todayMax * 9/5 + 32).toFixed(1);
+        todayMin = (todayMin * 9 / 5 + 32).toFixed(1);
+        todayMax = (todayMax * 9 / 5 + 32).toFixed(1);
     }
 
     const unit = isCelsius ? "°C" : "°F";
@@ -168,9 +160,7 @@ function renderForecast(daily) {
 }
 
 
-/* ---------------------------------------------- */
-/* THEME TOGGLE (unchanged, works correctly)       */
-/* ---------------------------------------------- */
+
 
 document.body.classList.add("light-mode");
 let isLight = true;
@@ -190,3 +180,4 @@ themeToggle.addEventListener("click", () => {
         themeToggle.textContent = "Light Mode";
     }
 });
+// Era Kelmendi
