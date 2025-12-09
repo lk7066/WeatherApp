@@ -25,25 +25,6 @@ body {
     color: #90caf9 !important;
 }
 
-/* input.form-control,
-.custom-search {
-    background: #9aa4c2!important;
-    border: 1px solid #bfbfbf !important;
-    color: #000 !important;
-}
-
-input.form-control::placeholder,
-.custom-search::placeholder {
-    color: #9aa4c2 !important;
-}
-
-input.form-control:focus,
-.custom-search:focus {
-    background: #e0e0e0 !important;
-    border-color: #64b5f6 !important;
-    color: black !important;
-} */
- /* Unified Search Bar Style (same in light & dark mode) */
 input.form-control,
 .custom-search {
     background: #1b2340 !important;
@@ -118,7 +99,7 @@ select.form-select:focus {
     font-weight: 600;
 }
 
-/* Temperature colors */
+
 .text-danger {
     color: #ef5350 !important;
 }
@@ -163,15 +144,6 @@ body.light-mode .welcome-card {
 
     
 }
-
-/* body.light-mode .form-control,
-body.light-mode .form-select,
-body.light-mode .custom-search {
-    background: #1b2340 !important;
-    color: #e6e6e6 !important;
-    border: 1px solid #cccccc !important;
-} */
-
 
 body.light-mode .btn-primary {
     background-color: #1e88e5 !important;
