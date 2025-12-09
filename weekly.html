@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekly Weather Forecast</title>
 
-    <!-- Bootstrap 5 -->
+   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="weekly.css">
@@ -18,24 +18,24 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 shadow-sm position-relative">
     <div class="container-fluid">
 
-        <!-- LEFT SIDE: Logo + App Name -->
+        
         <a class="navbar-brand d-flex align-items-center" href="#">
             <img src="https://cdn-icons-png.flaticon.com/512/869/869869.png" 
                  alt="logo" width="34" class="me-2">
             <span class="fw-bold fs-5">SkyCast</span>
         </a>
 
-        <!-- TRUE CENTERED TITLE -->
+        
         <div class="navbar-title position-absolute start-50 translate-middle-x d-none d-lg-block">
             <span class="text-white fw-bold fs-5">Weather Dashboard</span>
         </div>
 
-        <!-- MOBILE TOGGLER -->
+       
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuItems">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- RIGHT MENU -->
+        
         <div class="collapse navbar-collapse justify-content-end" id="menuItems">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-semibold" href="homepage.html">Home</a></li>
@@ -45,14 +45,14 @@
             </ul>
         </div>
 
-        <!-- THEME CHANGE-->
+       
         <button id="themeToggle" class="btn btn-outline-light ms-3">Light Mode</button>
 
     </div>
 </nav>
 
 
-<!-- WELCOME MESSAGE -->
+
 <div id="welcomeSection" class="container mt-4 text-center">
     <div class="welcome-card p-4 mx-auto">
         <div style="font-size: 80px;">🌤️</div>
@@ -63,12 +63,12 @@
 </div>
 
 
-<!-- SEARCH BAR MOVED BELOW WELCOME SECTION -->
+
 <div class="container mt-4">
     <div class="row g-3 justify-content-center">
 
         <div class="col-md-6">
-            <input id="cityInput" type="text" class="form-control custom-search" placeholder="Search city...">
+            <input id="cityInput" type="text" class="form-control custom-search" placeholder="Enter a city e.g. Pristina...">
         </div>
 
         <div class="col-md-3">
@@ -87,7 +87,7 @@
                 placeholder="Enter days (1–15)"
                 style="max-width: 120px;">
 
-            <!-- Temperature Toggle -->
+            
             <div class="btn-group ms-2" role="group">
                 <button type="button" class="btn btn-outline-primary" id="celsiusBtn">°C</button>
                 <button type="button" class="btn btn-outline-primary" id="fahrenheitBtn">°F</button>
@@ -97,12 +97,12 @@
 </div>
 
 
-<!-- FORECAST SECTION -->
+
 <div class="container mt-4">
     <h3 id="cityTitle" class="text-center mb-3"></h3>
 
     <div id="forecastContainer" class="row g-3">
-        <!-- JS inserts cards -->
+   
     </div>
 </div>
 

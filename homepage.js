@@ -1,6 +1,5 @@
 /* BEGIN Olta Ademi */
 
-/* DOM elements */
 const homeSearchBtn = document.getElementById("homeSearchBtn");
 const homeCityInput = document.getElementById("homeCityInput");
 const homeMessage = document.getElementById("homeMessage");
@@ -8,22 +7,21 @@ const locationsContainer = document.getElementById("locationsContainer");
 const citySuggestions = document.getElementById("citySuggestions");
 const noLocationsMessage = document.getElementById("noLocationsMessage");
 
-/* Unit toggle */
+
 const celsiusBtn = document.getElementById("celsiusBtn");
 const fahrenheitBtn = document.getElementById("fahrenheitBtn");
 let isCelsius = true;
 
-/* Shared selected city key (for other pages if needed) */
+
 const SELECTED_CITY_KEY = "selectedCity";
 
-/* weather code → emoji */
 const iconMapHome = {
     0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️",
     45: "🌫️", 48: "🌫️", 51: "🌦️",
     61: "🌧️", 71: "❄️", 80: "🌧️", 95: "⛈️"
 };
 
-/* weather code → description */
+
 const descriptionMapHome = {
     0: "Clear sky",
     1: "Mainly clear",
@@ -38,7 +36,7 @@ const descriptionMapHome = {
     95: "Thunderstorm"
 };
 
-/* ---------- Event listeners ---------- */
+
 
 homeSearchBtn.addEventListener("click", () => {
     fetchHomeCityWeather();
@@ -54,7 +52,7 @@ homeCityInput.addEventListener("input", () => {
     loadCitySuggestions();
 });
 
-/* Unit toggle buttons */
+
 if (celsiusBtn && fahrenheitBtn) {
     celsiusBtn.classList.add("active");
 
@@ -75,11 +73,11 @@ if (celsiusBtn && fahrenheitBtn) {
     });
 }
 
-/* default: Pristina as current location */
+
 fetchHomeCityWeather("Pristina", true);
 
 
-/* ---------- UI helpers ---------- */
+
 
 function showMessage(text, type) {
     if (!text) {
@@ -89,13 +87,13 @@ function showMessage(text, type) {
 
     const cls =
         type === "error" ? "alert-danger" :
-        type === "info"  ? "alert-info"  : "alert-success";
+            type === "info" ? "alert-info" : "alert-success";
 
     homeMessage.innerHTML =
         `<div class="alert ${cls} mb-0">${text}</div>`;
 }
 
-/* spinner on search button */
+
 function setLoading(isLoading) {
     if (isLoading) {
         homeSearchBtn.disabled = true;
@@ -107,14 +105,14 @@ function setLoading(isLoading) {
     }
 }
 
-/* "2025-01-01T06:51" → "06:51" */
+
 function formatTimePart(value) {
     if (!value) return "--:--";
     const parts = value.split("T");
     return parts.length === 2 ? parts[1].slice(0, 5) : value;
 }
 
-/* Celsius → display string based on current unit */
+
 function formatTempDisplay(celsiusValue) {
     if (celsiusValue === null || celsiusValue === undefined) return "--";
     if (isCelsius) {
@@ -125,7 +123,7 @@ function formatTempDisplay(celsiusValue) {
     }
 }
 
-/* ---------- Autocomplete suggestions ---------- */
+
 
 async function loadCitySuggestions() {
     const q = homeCityInput.value.trim();
@@ -174,7 +172,7 @@ function renderCitySuggestions(results) {
 }
 
 
-/* ---------- Geocoding: city → lat/lon ---------- */
+
 
 async function fetchHomeCityWeather(defaultCity, isDefaultLocation) {
     const cityName = (defaultCity || homeCityInput.value).trim();
@@ -220,7 +218,6 @@ async function fetchHomeCityWeather(defaultCity, isDefaultLocation) {
 }
 
 
-/* ---------- Weather forecast ---------- */
 
 async function fetchHomeForecast(lat, lon, name, country, saveSelected, isDefaultLocation) {
     try {
@@ -247,7 +244,7 @@ async function fetchHomeForecast(lat, lon, name, country, saveSelected, isDefaul
         const sunset = data.daily.sunset[0];
 
         const highTemp = data.daily.temperature_2m_max[0];
-        const lowTemp  = data.daily.temperature_2m_min[0];
+        const lowTemp = data.daily.temperature_2m_min[0];
 
         addLocationCard(
             name,
@@ -279,7 +276,7 @@ async function fetchHomeForecast(lat, lon, name, country, saveSelected, isDefaul
 }
 
 
-/* ---------- Create one location card ---------- */
+
 
 function addLocationCard(
     name,
@@ -319,7 +316,7 @@ function addLocationCard(
         ? "location-card location-card-current"
         : "location-card";
 
-    /* ❤️ HEART ICON: only for non-default locations */
+
     const heartIcon = !isDefaultLocation
         ? '<span class="heart-btn">❤️</span>'
         : "";
@@ -368,12 +365,11 @@ function addLocationCard(
 
     locationsContainer.insertAdjacentHTML("beforeend", html);
 
-    /* hide placeholder after first card */
     if (noLocationsMessage) {
         noLocationsMessage.style.display = "none";
     }
 
-    /* attach remove button for non-default cards */
+
     if (!isDefaultLocation) {
         const allCols = locationsContainer.querySelectorAll(".location-col");
         const lastCol = allCols[allCols.length - 1];
@@ -390,19 +386,18 @@ function addLocationCard(
         }
     }
 
-    // Make sure new card matches current unit (C/F)
+
     refreshTemperatureUnits();
 }
 
 
-/* ---------- Update temps when toggling C/F ---------- */
 
 function refreshTemperatureUnits() {
     const cards = locationsContainer.querySelectorAll(".location-card");
     cards.forEach(card => {
         const tempC = parseFloat(card.dataset.temp);
         const highC = parseFloat(card.dataset.high);
-        const lowC  = parseFloat(card.dataset.low);
+        const lowC = parseFloat(card.dataset.low);
         const feelsC = parseFloat(card.dataset.feels);
 
         if (Number.isNaN(tempC)) return;
@@ -425,12 +420,12 @@ function refreshTemperatureUnits() {
 }
 
 
-/* ---------- THEME TOGGLE (Lea) ---------- */
+
 
 const themeToggle = document.getElementById("themeToggle");
 
 if (themeToggle) {
-    // default = light mode
+
     document.body.classList.add("light-mode");
     let isLight = true;
 

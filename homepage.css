@@ -1,13 +1,11 @@
 /* BEGIN Olta Ademi */
 
-/* Background: faded sunset image, anchored to bottom */
+
 body {
-    /* white veil over the image for fade */
+
     background:
-        linear-gradient(
-            rgba(255, 255, 255, 0.6),
-            rgba(255, 255, 255, 0.6)
-        ),
+        linear-gradient(rgba(255, 255, 255, 0.6),
+            rgba(255, 255, 255, 0.6)),
         url("sunset.jpg");
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -15,26 +13,24 @@ body {
     min-height: 100vh;
 }
 
-/* NIGHT MODE: darker overlay + night image */
+
 body.dark-mode {
     background:
-        linear-gradient(
-            rgba(0, 0, 0, 0.45),
-            rgba(0, 0, 0, 0.55)
-        ),
+        linear-gradient(rgba(0, 0, 0, 0.45),
+            rgba(0, 0, 0, 0.55)),
         url("night.jpg");
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: cover;
 }
 
-/* Overall spacing */
+
 section {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
 }
 
-/* Pull locations & more-details closer so both are visible */
+
 .locations-section {
     padding-bottom: 0.75rem;
 }
@@ -43,7 +39,7 @@ section {
     padding-top: 0.75rem;
 }
 
-/* Welcome text */
+
 .welcome-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -58,12 +54,12 @@ section {
     text-shadow: 0 1px 2px rgba(255, 255, 255, 0.7);
 }
 
-/* Optional: make "SkyCast" name match search button color */
+
 .skycast-name {
     color: #072a57;
 }
 
-/* Titles in sections (day mode defaults) */
+
 .locations-section h4 {
     color: #0b2347;
 }
@@ -76,7 +72,7 @@ section {
     color: #384b6b;
 }
 
-/* Suggestions dropdown */
+
 #citySuggestions {
     z-index: 2000;
     max-height: 260px;
@@ -88,7 +84,7 @@ section {
     font-size: 0.9rem;
 }
 
-/* Location card – glassmorphism style */
+
 .location-card {
     border-radius: 18px;
     background: rgba(8, 12, 26, 0.9);
@@ -100,7 +96,7 @@ section {
     transition: transform 0.16s ease, box-shadow 0.16s ease;
 }
 
-/* SPECIAL color for CURRENT LOCATION (Pristina) */
+
 .location-card-current {
     background: linear-gradient(135deg, #072a57, #0b2347);
 }
@@ -139,7 +135,7 @@ section {
     font-size: 2.3rem;
 }
 
-/* CURRENT LOCATION badge */
+
 .location-badge {
     display: inline-block;
     padding: 0.15rem 0.6rem;
@@ -151,7 +147,7 @@ section {
     margin-top: 0.3rem;
 }
 
-/* Highlight chips row */
+
 .location-chips {
     display: flex;
     flex-wrap: wrap;
@@ -168,7 +164,7 @@ section {
     white-space: nowrap;
 }
 
-/* Close (X) button visible on dark background */
+
 .location-card .btn-close {
     filter: invert(1);
     opacity: 0.75;
@@ -179,7 +175,7 @@ section {
     opacity: 1;
 }
 
-/* Center single card on larger screens (Pristina default) */
+
 @media (min-width: 768px) {
     .location-col:first-child:last-child {
         margin-left: auto;
@@ -188,7 +184,7 @@ section {
     }
 }
 
-/* Detail cards under "More details" */
+
 .detail-card {
     border-radius: 18px;
     background: rgba(255, 255, 255, 0.9);
@@ -204,7 +200,7 @@ section {
     font-size: 2.2rem;
 }
 
-/* Make SEARCH button same color as Pristina card */
+
 .btn-primary {
     background-color: #072a57;
     border-color: #072a57;
@@ -216,7 +212,7 @@ section {
     border-color: #061f3c;
 }
 
-/* ======== NEW: °C / °F TOGGLE NEXT TO SEARCH ======== */
+
 
 .unit-toggle {
     border-radius: 0.75rem;
@@ -238,7 +234,7 @@ section {
     color: #ffffff;
 }
 
-/* ============ NAVBAR (Lea) ============ */
+
 .navbar {
     background: #0d47a1 !important;
     box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
@@ -256,14 +252,12 @@ section {
     color: #90caf9 !important;
 }
 
-/* Light Mode Navbar */
+
 body.light-mode .navbar {
     background: #1976d2 !important;
 }
 
-/* ============ FOOTER (Lea original) ============ */
 
-/* Footer Light Mode */
 body.light-mode .footer {
     background-color: #f1f3f5;
     font-size: 0.9rem;
@@ -271,7 +265,6 @@ body.light-mode .footer {
     border-top: 1px solid #d5d7da;
 }
 
-/* Footer Dark Mode */
 body.dark-mode .footer {
     background-color: #1e1e1e;
     color: #ffffff !important;
@@ -279,7 +272,7 @@ body.dark-mode .footer {
     border-top: 1px solid #3a3a3a;
 }
 
-/* HEART ICON BUTTON (NEW) */
+
 .heart-btn {
     font-size: 1.4rem;
     margin-right: 8px;
@@ -293,28 +286,26 @@ body.dark-mode .footer {
     opacity: 1;
 }
 
-/* ================= NIGHT MODE TEXT COLORS ================= */
 
-/* Make the navy titles readable on dark background */
 body.dark-mode .welcome-title,
 body.dark-mode .welcome-subtitle {
     color: #f5f7ff;
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-/* "SkyCast" name */
+
 body.dark-mode .skycast-name {
     color: #ffffff;
 }
 
-/* Section headings + descriptions */
+
 body.dark-mode .locations-section h4,
 body.dark-mode .more-details-section h2,
 body.dark-mode .more-details-section p {
     color: #f5f7ff;
 }
 
-/* Muted helper texts (Current location, etc.) */
+
 body.dark-mode .text-muted {
     color: #dfe6ff !important;
 }

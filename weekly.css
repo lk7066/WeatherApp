@@ -1,8 +1,4 @@
-/* BEGIN StudentName */
-
-/* ----------------------------------------------------- */
-/* GLOBAL THEME                                           */
-/* ----------------------------------------------------- */
+/* BEGIN Lea Krasniqi */
 
 body {
     background: linear-gradient(180deg, #0a0f24 0%, #141a33 40%, #0a0f24 100%);
@@ -11,14 +7,9 @@ body {
     overflow-x: hidden;
 }
 
-/* Make containers smoother */
 .container {
     max-width: 1100px;
 }
-
-/* ----------------------------------------------------- */
-/* NAVBAR                                                 */
-/* ----------------------------------------------------- */
 
 .navbar {
     background: #0d47a1 !important;
@@ -34,10 +25,6 @@ body {
     color: #90caf9 !important;
 }
 
-/* ----------------------------------------------------- */
-/* SEARCH BAR (MODIFIED AS REQUESTED)                    */
-/* ----------------------------------------------------- */
-
 input.form-control,
 .custom-search {
     background: #9aa4c2!important;
@@ -47,7 +34,7 @@ input.form-control,
 
 input.form-control::placeholder,
 .custom-search::placeholder {
-    color: #555 !important;
+    color: #9aa4c2 !important;
 }
 
 input.form-control:focus,
@@ -56,10 +43,6 @@ input.form-control:focus,
     border-color: #64b5f6 !important;
     color: black !important;
 }
-
-/* ----------------------------------------------------- */
-/* BUTTONS                                               */
-/* ----------------------------------------------------- */
 
 .btn-primary {
     background-color: #1565c0;
@@ -82,9 +65,6 @@ select.form-select:focus {
     border-color: #64b5f6;
 }
 
-/* ----------------------------------------------------- */
-/* WELCOME CARD                                           */
-/* ----------------------------------------------------- */
 
 .welcome-card {
     background: rgba(255, 255, 255, 0.04);
@@ -97,9 +77,6 @@ select.form-select:focus {
     
 }
 
-/* ----------------------------------------------------- */
-/* FORECAST CARDS                                         */
-/* ----------------------------------------------------- */
 
 .card-weather {
     background: #1b2340;
@@ -134,9 +111,7 @@ select.form-select:focus {
     color: whitesmoke !important;
 }
 
-/* ----------------------------------------------------- */
-/* RESPONSIVE FIXES                                       */
-/* ----------------------------------------------------- */
+
 
 @media (max-width: 576px) {
     .welcome-card {
@@ -144,16 +119,12 @@ select.form-select:focus {
     }
 }
 
-/* ----------------------------------------------------- */
-/* LIGHT MODE THEME — Lea Krasniqi                       */
-/* ----------------------------------------------------- */
 
 body.light-mode {
     background: linear-gradient(180deg, #cfe7ff 0%, #eaf3ff 40%, #ffffff 100%) !important;
     color: black !important;
 }
 
-/* Cards */
 body.light-mode .card-weather {
     background: white !important;
     color: black !important;
@@ -166,7 +137,6 @@ body.light-mode .card-weather:hover {
     transform: scale(1.03);
 }
 
-/* Welcome card */
 body.light-mode .welcome-card {
     background: rgba(255, 255, 255, 0.85) !important;
     color: black !important;
@@ -174,7 +144,6 @@ body.light-mode .welcome-card {
     
 }
 
-/* Inputs (light mode override) */
 body.light-mode .form-control,
 body.light-mode .form-select,
 body.light-mode .custom-search {
@@ -184,20 +153,17 @@ body.light-mode .custom-search {
 }
 
 
-
-/* Buttons */
 body.light-mode .btn-primary {
     background-color: #1e88e5 !important;
     border: none !important;
 }
 
-/* Navbar */
+
 body.light-mode .navbar {
     background: #1976d2 !important;
     box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
 }
 
-/* Text colors */
 body.light-mode .text-danger {
     color: #d32f2f !important;
 }
@@ -210,7 +176,6 @@ body.light-mode .text-muted {
     color: #000 !important;
 }
 
-/* Footer */
 body.light-mode .footer {
     background-color: #f1f3f5;
     font-size: 0.9rem;
@@ -219,10 +184,9 @@ body.light-mode .footer {
 }
 
 body.dark-mode .footer {
-    /* background-color: #212529 !important; */
     color: #ffffff !important;
     font-size: 0.9rem;
     border-top: 1px solid #3a3a3a;
 }
 
-/* END StudentNa*
+/* END Lea Krasniqi*
